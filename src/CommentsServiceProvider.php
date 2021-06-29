@@ -2,9 +2,9 @@
 
 namespace JoniDot\Comments;
 
+use JoniDot\Comments\Commands\CommentsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use JoniDot\Comments\Commands\CommentsCommand;
 
 class CommentsServiceProvider extends PackageServiceProvider
 {
