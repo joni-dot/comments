@@ -2,9 +2,11 @@
 
 namespace JoniDot\Comments;
 
+use Livewire\Livewire;
 use JoniDot\Comments\Commands\CommentsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use JoniDot\Comments\Http\Livewire\Comments;
 
 class CommentsServiceProvider extends PackageServiceProvider
 {
@@ -21,5 +23,9 @@ class CommentsServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasMigration('create_comments_table')
             ->hasCommand(CommentsCommand::class);
+    }
+
+    public function packageBooted() {
+        Livewire::component('comments::comments', Comments::class);
     }
 }

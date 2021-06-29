@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Traits;
+namespace JoniDot\Comments\Models\Traits;
 
-use App\Models\Comment;
+use JoniDot\Comments\Models\Comment;
 
 trait Commentable
 {

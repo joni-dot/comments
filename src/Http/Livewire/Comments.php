@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\General;
+namespace JoniDot\Comments\Http\Livewire;
 
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
@@ -23,7 +23,7 @@ class Comments extends Component
      */
     public function render()
     {
-        return view('livewire.general.comments', [
+        return view('comments::livewire.comments', [
             'comments' => $this->model->comments()->get(),
         ]);
     }
