@@ -21,8 +21,17 @@ class CommentsServiceProvider extends PackageServiceProvider
             ->name('comments')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_comments_table')
             ->hasCommand(CommentsCommand::class);
+    }
+
+    /**
+     * Bootstrap any package services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     public function packageBooted()
