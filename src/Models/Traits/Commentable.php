@@ -2,6 +2,7 @@
 
 namespace JoniDot\Comments\Models\Traits;
 
+use Illuminate\Support\Facades\Auth;
 use JoniDot\Comments\Models\Comment;
 
 trait Commentable
@@ -14,7 +15,7 @@ trait Commentable
     public function addComment(string $comment): void
     {
         $this->comments()->create([
-            'user_id' => 1,
+            'user_id' => Auth::id(),
             'comment' => $comment,
         ]);
     }
