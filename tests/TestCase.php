@@ -4,6 +4,7 @@ namespace JoniDot\Comments\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use JoniDot\Comments\CommentsServiceProvider;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -21,6 +22,7 @@ class TestCase extends Orchestra
     {
         return [
             CommentsServiceProvider::class,
+            LivewireServiceProvider::class,
         ];
     }
 
