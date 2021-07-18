@@ -16,6 +16,10 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'JoniDot\\Comments\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
+
+        config([
+            'app.key' => 'klsdnmeikljdslfmnsdflkjfdkljkdfl',
+        ]);
     }
 
     protected function getPackageProviders($app)
@@ -30,9 +34,8 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
-        /*
-        include_once __DIR__.'/../database/migrations/create_comments_table.php.stub';
-        (new \CreatePackageTable())->up();
-        */
+        include_once __DIR__.'/../database/migrations/2021_04_21_000001_create_comments_table.php';
+        
+        (new \CreateCommentsTable())->up();
     }
 }
