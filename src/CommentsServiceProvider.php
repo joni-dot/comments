@@ -2,7 +2,6 @@
 
 namespace JoniDot\Comments;
 
-use JoniDot\Comments\Commands\CommentsCommand;
 use JoniDot\Comments\Http\Livewire\Comments;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
@@ -11,8 +10,8 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 class CommentsServiceProvider extends PackageServiceProvider
 {
     /**
-     * Configure a package related things. 
-     * 
+     * Configure a package related things.
+     *
      * @param  \Spatie\LaravelPackageTools\Package
      * @return void
      */
@@ -25,7 +24,7 @@ class CommentsServiceProvider extends PackageServiceProvider
 
     /**
      * Do specific things after package has been booted.
-     * 
+     *
      * @return void
      */
     public function packageBooted(): void
