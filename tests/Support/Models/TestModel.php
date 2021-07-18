@@ -2,8 +2,8 @@
 
 namespace JoniDot\Comments\Tests\Support\Models;
 
-use JoniDot\Comments\Models\Traits\Commentable;
 use Illuminate\Database\Eloquent\Model;
+use JoniDot\Comments\Models\Traits\Commentable;
 
 class TestModel extends Model
 {
