@@ -1,11 +1,6 @@
 # Model related comments by using Laravel and Livewire.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/joni-dot/comments.svg?style=flat-square)](https://packagist.org/packages/joni-dot/comments)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/joni-dot/comments/run-tests?label=tests)](https://github.com/joni-dot/comments/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/joni-dot/comments/Check%20&%20fix%20styling?label=code%20style)](https://github.com/joni-dot/comments/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/joni-dot/comments.svg?style=flat-square)](https://packagist.org/packages/joni-dot/comments)
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+A simple comment plugin built by using Laravel and Livewire.
 
 ## Installation
 
@@ -27,19 +22,9 @@ You can publish the config file with:
 php artisan vendor:publish --provider="JoniDot\Comments\CommentsServiceProvider" --tag="comments-config"
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
 ## Usage
 
-```php
-$comments = new JoniDot\Comments();
-echo $comments->echoPhrase('Hello, Spatie!');
-```
+...
 
 ## Testing
 
