@@ -4,4 +4,5 @@ namespace JoniDot\Comments;
 
 class Comments
 {
+    
 }

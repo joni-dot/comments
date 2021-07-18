@@ -3,6 +3,7 @@
 namespace JoniDot\Comments\Http\Livewire;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class Comments extends Component
@@ -10,7 +11,10 @@ class Comments extends Component
     public $model;
     public $comment;
 
-    public function mount(Model $model)
+    /**
+     * Mount component and set values like model.
+     */
+    public function mount(Model $model): void
     {
         $this->model = $model;
         $this->comment = '';
@@ -21,7 +25,7 @@ class Comments extends Component
      *
      * @return void
      */
-    public function render()
+    public function render(): View
     {
         return view('comments::livewire.comments', [
             'comments' => $this->model->comments()->get(),
@@ -33,7 +37,7 @@ class Comments extends Component
      *
      * @return void
      */
-    public function addComment()
+    public function addComment(): void
     {
         $this->validate([
             'comment' => 'required|min:1',

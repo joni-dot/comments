@@ -10,21 +10,25 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class CommentsServiceProvider extends PackageServiceProvider
 {
+    /**
+     * Configure a package related things. 
+     * 
+     * @param  \Spatie\LaravelPackageTools\Package
+     * @return void
+     */
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
             ->name('comments')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasCommand(CommentsCommand::class);
+            ->hasViews();
     }
 
-    public function packageBooted()
+    /**
+     * Do specific things after package has been booted.
+     * 
+     * @return void
+     */
+    public function packageBooted(): void
     {
         Livewire::component('comments::comments', Comments::class);
 
