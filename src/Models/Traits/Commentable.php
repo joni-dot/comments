@@ -17,10 +17,10 @@ trait Commentable
 
     /**
      * Add comment for the model.
-     * 
+     *
      * @param  string  $comment
      * @return void
-     * 
+     *
      */
     public function addComment(string $comment): void
     {
