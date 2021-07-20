@@ -1,35 +1,4 @@
-<div class="h-100 w-full flex bg-teal-lightest shadow">
-    <div class="bg-white rounded shadow w-full p-6">
-        <div>
-            <ul>
-                @foreach($comments as $comment)
-                    <li class="text-sm p-4 mb-4 shadow border-solid border-gray-400 rounded">
-                        {{ $comment->comment }}
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-        <div>
-            <textarea 
-                class="my-2 w-full rounded border shadow"
-                id="comment"
-                name="comment"
-                wire:model.defer="comment"
-            ></textarea>
-            @error('comment')
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-5" role="alert">
-                    <strong class="font-bold">{{ $text }}!</strong>
-                    <span class="block sm:inline">{{ $message }}</span>
-                </div>
-            @enderror
-            <button 
-                wire:click="addComment()"
-                wire:loading.attr="disabled"
-                class="shadow rounded bg-blue-600 py-2 px-4 text-white disabled"
-            >
-                <span wire:loading.remove>Add comment</span>
-                <span wire:loading>@svg('refresh', 'animate-spin fill-current w-4 h-4 mr-1 ml-0 inline')</span>
-            </button>
-        </div>
-    </div>
-</div>
+<x-comments::container>
+    <x-comments::comments :comments="$comments" />
+    <x-comments::form />
+</x-comments::container>

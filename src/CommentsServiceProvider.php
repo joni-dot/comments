@@ -2,6 +2,7 @@
 
 namespace JoniDot\Comments;
 
+use Illuminate\Support\Facades\Blade;
 use JoniDot\Comments\Http\Livewire\Comments;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
@@ -29,6 +30,14 @@ class CommentsServiceProvider extends PackageServiceProvider
      */
     public function packageBooted(): void
     {
+        Blade::component('comments::components._container', 'comments::container');
+        Blade::component('comments::components._comments', 'comments::comments');
+        Blade::component('comments::components._comment', 'comments::comment');
+        Blade::component('comments::components._form', 'comments::form');
+        Blade::component('comments::components._form-comment', 'comments::form-comment');
+        Blade::component('comments::components._form-validation-error', 'comments::form-validation-error');
+        Blade::component('comments::components._form-button', 'comments::form-button');
+
         Livewire::component('comments::comments', Comments::class);
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
