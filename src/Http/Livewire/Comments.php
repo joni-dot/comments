@@ -47,4 +47,18 @@ class Comments extends Component
 
         $this->comment = '';
     }
+
+    /**
+     * Remove comment from database.
+     *
+     * @param  int  $commentId
+     * @return void
+     */
+    public function removeComment($commentId): void
+    {
+        $this->model
+            ->comments()
+            ->whereId($commentId)
+            ->delete();
+    }
 }
