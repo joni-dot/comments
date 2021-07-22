@@ -56,9 +56,6 @@ class Comments extends Component
      */
     public function removeComment($commentId): void
     {
-        $this->model
-            ->comments()
-            ->whereId($commentId)
-            ->delete();
+        $this->model->removeComment($commentId);
     }
 }

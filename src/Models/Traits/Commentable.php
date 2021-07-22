@@ -29,4 +29,18 @@ trait Commentable
             'comment' => $comment,
         ]);
     }
+
+    /**
+     * Remove the model related comment.
+     *
+     * @param  int  $commentId
+     * @return void
+     *
+     */
+    public function removeComment(int $commentId): void
+    {
+        $this->comments()
+            ->whereId($commentId)
+            ->delete();
+    }
 }
