@@ -10,6 +10,8 @@ class Comments extends Component
 {
     public $model;
     public $comment;
+    public $editableCommentId;
+    public $editableComment;
 
     /**
      * Mount component and set values like model.
@@ -18,6 +20,8 @@ class Comments extends Component
     {
         $this->model = $model;
         $this->comment = '';
+        $this->editableCommentId = null;
+        $this->editableComment = '';
     }
 
     /**
@@ -61,5 +65,43 @@ class Comments extends Component
         }
 
         $this->model->removeComment($commentId);
+    }
+
+    /**
+     * Activate comment edit field.
+     *
+     * @param  int  $commentId
+     * @return void
+     */
+    public function editComment($commentId): void
+    {
+        $this->editableCommentId = $commentId;
+
+        $this->editableComment = $this->model
+            ->comments()
+            ->whereId($commentId)
+            ->first()
+            ->comment;
+    }
+
+    /**
+     * Update specific comment.
+     *
+     * @param  int  $commentId
+     * @return void
+     */
+    public function updateComment($commentId): void
+    {
+        $this->validate([
+            'editableComment' => 'required|min:1',
+        ]);
+
+        $this->model->updateComment(
+            $commentId,
+            $this->editableComment
+        );
+
+        $this->editableCommentId = null;
+        $this->editableComment = '';
     }
 }

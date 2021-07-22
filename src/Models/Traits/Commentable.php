@@ -55,4 +55,21 @@ trait Commentable
             ->whereId($commentId)
             ->delete();
     }
+
+    /**
+     * Update the model related comment.
+     *
+     * @param  int  $commentId
+     * @param  string  $comment
+     * @return void
+     *
+     */
+    public function updateComment(int $commentId, string $comment): void
+    {
+        $this->comments()
+            ->whereId($commentId)
+            ->update([
+                'comment' => $comment,
+            ]);
+    }
 }
