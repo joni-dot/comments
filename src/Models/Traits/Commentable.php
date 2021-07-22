@@ -57,6 +57,18 @@ trait Commentable
     }
 
     /**
+     * Check that user can update the comment.
+     *
+     * @param  int  $commentId
+     * @return bool
+     *
+     */
+    public function authorizeUpdateComment(int $commentId): bool
+    {
+        return true;
+    }
+
+    /**
      * Update the model related comment.
      *
      * @param  int  $commentId

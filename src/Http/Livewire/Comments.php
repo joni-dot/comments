@@ -92,6 +92,10 @@ class Comments extends Component
      */
     public function updateComment($commentId): void
     {
+        if (! $this->model->authorizeUpdateComment($commentId)) {
+            abort(403);
+        }
+
         $this->validate([
             'editableComment' => 'required|min:1',
         ]);
