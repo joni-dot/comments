@@ -31,6 +31,18 @@ trait Commentable
     }
 
     /**
+     * Check that user can remove the comment.
+     *
+     * @param  int  $commentId
+     * @return bool
+     *
+     */
+    public function authorizeRemoveComment(int $commentId): bool
+    {
+        return true;
+    }
+
+    /**
      * Remove the model related comment.
      *
      * @param  int  $commentId

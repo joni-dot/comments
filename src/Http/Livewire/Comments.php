@@ -56,6 +56,10 @@ class Comments extends Component
      */
     public function removeComment($commentId): void
     {
+        if (! $this->model->authorizeRemoveComment($commentId)) {
+            abort(403);
+        }
+
         $this->model->removeComment($commentId);
     }
 }
