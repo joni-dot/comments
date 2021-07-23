@@ -2,14 +2,36 @@
     <div class="border-solid shadow py-2 px-2 mb-2 text-right">
         @if ($model->authorizeUpdateComment($comment->id)) 
             <span class="text-gray-700 mr-1">
-                <span wire:click="editComment('{{ $comment->id }}')" wire:loading.remove>@svg('edit-pencil', 'fill-current w-4 h-4 mr-1 ml-0 inline')</span>
-                <span wire:loading>@svg('refresh', 'animate-spin fill-current w-4 h-4 mr-1 ml-0 inline')</span>
+                <span 
+                    wire:click="editComment('{{ $comment->id }}')" 
+                    wire:loading.remove
+                    wire:target="editComment('{{ $comment->id }}')"
+                >
+                    @svg('edit-pencil', 'fill-current w-4 h-4 mr-1 ml-0 inline')
+                </span>
+                <span 
+                    wire:loading
+                    wire:target="editComment('{{ $comment->id }}')"
+                >
+                    @svg('refresh', 'animate-spin fill-current w-4 h-4 mr-1 ml-0 inline')
+                </span>
             </span>
         @endif
         @if ($model->authorizeRemoveComment($comment->id)) 
             <span class="text-gray-700">
-                <span wire:click="removeComment('{{ $comment->id }}')" wire:loading.remove>@svg('trash', 'fill-current w-4 h-4 mr-1 ml-0 inline')</span>
-                <span wire:loading>@svg('refresh', 'animate-spin fill-current w-4 h-4 mr-1 ml-0 inline')</span>
+                <span 
+                    wire:click="removeComment('{{ $comment->id }}')" 
+                    wire:loading.remove
+                    wire:target="removeComment('{{ $comment->id }}')"
+                >
+                    @svg('trash', 'fill-current w-4 h-4 mr-1 ml-0 inline')
+                </span>
+                <span 
+                    wire:loading
+                    wire:target="removeComment('{{ $comment->id }}')"
+                >
+                    @svg('refresh', 'animate-spin fill-current w-4 h-4 mr-1 ml-0 inline')
+                </span>
             </span>
         @endif
     </div>
@@ -27,8 +49,17 @@
             wire:loading.attr="disabled"
             class="shadow rounded bg-blue-600 py-1 px-2 text-white disabled"
         >
-            <span wire:loading.remove>Update comment</span>
-            <span wire:loading>@svg('refresh', 'animate-spin fill-current w-4 h-4 mr-1 ml-0 inline')</span>
+            <span
+                wire:loading.remove
+                wire:target="updateComment('{{ $comment->id }}')"
+            >
+                Update comment</span>
+            <span 
+                wire:loading
+                wire:target="updateComment('{{ $comment->id }}')"
+            >
+                @svg('refresh', 'animate-spin fill-current w-4 h-4 mr-1 ml-0 inline')
+            </span>
         </button>   
     @endIf
 </li>
