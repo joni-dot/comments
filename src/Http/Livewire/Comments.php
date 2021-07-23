@@ -32,7 +32,10 @@ class Comments extends Component
     public function render(): View
     {
         return view('comments::livewire.comments', [
-            'comments' => $this->model->comments()->get(),
+            'comments' => $this->model
+                ->comments()
+                ->with('user')
+                ->get(),
         ]);
     }
 
