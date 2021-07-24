@@ -52,7 +52,7 @@ trait Commentable
     public function removeComment(int $commentId): void
     {
         Comment::where([
-            'id' => $commentId, 
+            'id' => $commentId,
             'commentable_id' => $this->id,
             'commentable_type' => $this->getMorphClass(),
         ])
