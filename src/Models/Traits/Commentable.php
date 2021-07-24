@@ -51,8 +51,12 @@ trait Commentable
      */
     public function removeComment(int $commentId): void
     {
-        $this->comments()
-            ->whereId($commentId)
+        Comment::where([
+            'id' => $commentId, 
+            'commentable_id' => $this->id,
+            'commentable_type' => $this->getMorphClass(),
+        ])
+            ->firstOrFail()
             ->delete();
     }
 

@@ -2,10 +2,12 @@
     <div class="border-solid shadow py-2 px-2 mb-4">
         <div class="flex">
             <div class="flex-1 text-left">
-                <span>
-                    <span class="mr-1">@svg('user', 'fill-current w-4 h-4 mr-1 ml-0 inline')</span>
-                    <strong>{{ $comment->user->name }}</strong> commented:
-                </span>
+                @if ($showUser)
+                    <span>
+                        <span class="mr-1">@svg('user', 'fill-current w-4 h-4 mr-1 ml-0 inline')</span>
+                        <strong>{{ $comment->user->name }}</strong> commented:
+                    </span>
+                @endif
             </div>
             <div class="flex-1 text-right">
                 @if ($model->authorizeUpdateComment($comment->id)) 

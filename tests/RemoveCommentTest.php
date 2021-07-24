@@ -7,24 +7,28 @@ use JoniDot\Comments\Models\Comment;
 use JoniDot\Comments\Tests\Support\Models\TestModel;
 use Livewire\Livewire;
 
-class CreateCommentTest extends TestCase
+class RemoveCommentTest extends TestCase
 {
     /** @test  */
-    public function can_create_comment()
+    public function can_remove_comment()
     {
         $testModel = new TestModel;
 
         $testModel->forceFill([
             'id' => 1,
         ]);
+        
+        $comment = Comment::factory()->create([
+            'commentable_id' => $testModel->id,
+            'commentable_type' => $testModel->getMorphClass(),
+        ]);
 
         Livewire::test(Comments::class, [
             'model' => $testModel,
             'showUser' => false,
         ])
-            ->set('comment', 'Test comment.')
-            ->call('addComment');
+            ->call('removeComment', $comment->id);
 
-        $this->assertTrue(Comment::whereComment('Test comment.')->exists());
+        $this->assertNull(Comment::find($comment->id));
     }
 }

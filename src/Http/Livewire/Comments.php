@@ -12,16 +12,18 @@ class Comments extends Component
     public $comment;
     public $editableCommentId;
     public $editableComment;
+    public $showUser;
 
     /**
      * Mount component and set values like model.
      */
-    public function mount(Model $model): void
+    public function mount(Model $model, bool $showUser = true): void
     {
         $this->model = $model;
         $this->comment = '';
         $this->editableCommentId = null;
         $this->editableComment = '';
+        $this->showUser = $showUser;
     }
 
     /**
@@ -34,7 +36,7 @@ class Comments extends Component
         return view('comments::livewire.comments', [
             'comments' => $this->model
                 ->comments()
-                ->with('user')
+                ->with($this->showUser ? ['user'] : [])
                 ->get(),
         ]);
     }

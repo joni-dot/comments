@@ -2,8 +2,7 @@
 
 namespace JoniDot\Comments\Database\Factories;
 
-use App\Models\Comment;
-use App\Models\User;
+use JoniDot\Comments\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentFactory extends Factory
@@ -23,7 +22,7 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory()->create()->id,
+            'user_id' => null,
             'commentable_id' => 1,
             'commentable_type' => 'type',
             'comment' => $this->faker->sentences(2, true),

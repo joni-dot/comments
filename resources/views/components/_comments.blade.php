@@ -4,7 +4,8 @@
             <x-comments::comment  
                 :model="$model"
                 :comment="$comment" 
-                :editableCommentId="$editableCommentId" 
+                :editableCommentId="$editableCommentId"
+                :showUser="$showUser"
             />
         @endforeach
     </ul>

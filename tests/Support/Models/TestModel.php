@@ -15,4 +15,14 @@ class TestModel extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getIdAttribute()
+    {
+        return 1;
+    }
 }
