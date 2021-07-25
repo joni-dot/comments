@@ -50,12 +50,29 @@
     @if ($comment->id != $editableCommentId)
         {{ $comment->comment }}
     @else
-        <textarea 
-            class="my-2 w-full rounded border shadow"
-            id="editableComment"
-            name="editableComment"
-            wire:model.defer="editableComment"
-        >{{ $comment->comment }}</textarea>
+        <div x-data="{ 
+            count: {{ mb_strlen($comment->comment) }},
+            comment: '{{ $comment->comment }}', 
+            countComment: function () {
+                this.count = this.comment.length;
+            },
+        }">
+            <textarea 
+                class="my-2 w-full rounded border shadow"
+                id="editableComment"
+                name="editableComment"
+                wire:model.defer="editableComment"
+                x-model="comment"
+                x-on:keyUp="countComment()"
+            >{{ $comment->comment }}</textarea>
+            <div class="mb-2 text-right">
+                <span class="bg-blue-600 text-white text-sm py-1 px-2 rounded-xl">
+                    <strong x-text="count">
+                        {{ mb_strlen($comment->comment) }}
+                    </strong> characters...
+                </span>
+            </div>
+        </div>
         <button 
             wire:click="updateComment('{{ $comment->id }}')"
             wire:loading.attr="disabled"
